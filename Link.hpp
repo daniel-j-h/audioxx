@@ -4,6 +4,9 @@
 
 namespace Audioxx {
 
+  /**
+   * Manages the link between a source and a buffer.
+   */
   class Link final {
 
     public:

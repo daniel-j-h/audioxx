@@ -6,6 +6,9 @@
 
 namespace Audioxx {
 
+  /**
+   * Manages the device and context creation, essential for each application.
+   */
   class Device final {
 
     public:

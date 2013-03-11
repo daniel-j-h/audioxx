@@ -6,6 +6,12 @@
 
 namespace Audioxx {
 
+  /**
+   * Manages the mapping between a file and a memory buffer.
+   *
+   * Note: The whole file gets mapped into memory.
+   * See Stream for a memory efficient alternative.
+   */
   class Buffer final {
 
     public:

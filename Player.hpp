@@ -10,6 +10,9 @@
 
 namespace Audioxx {
 
+  /**
+   * Offers high level audio functionality.
+   */
   class Player final {
 
     public:

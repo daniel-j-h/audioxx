@@ -21,4 +21,5 @@ Opt. adapt the Makefile to your needs
 Todo
 ----
 
+* Stream properties handling (chunk size, bytes)
 * Explore OpenAL API, ALURE API

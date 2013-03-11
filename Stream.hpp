@@ -7,6 +7,12 @@
 
 namespace Audioxx {
 
+  /**
+   * Manages the streaming of a file.
+   *
+   * Note: This is similar to a Buffer, but instead of mapping the whole file into memory,
+   * we load it chunk by chunk into buffers while switching the active one.
+   */
   class Stream final {
 
     public:

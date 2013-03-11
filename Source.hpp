@@ -11,6 +11,9 @@
 
 namespace Audioxx {
 
+  /**
+   * Manages a source, on which various audio functions are invoked.
+   */
   class Source final {
 
     public:
@@ -33,7 +36,8 @@ namespace Audioxx {
       void play(const std::string& filename) {
         Buffer buffer(filename);
 
-        Link link(source, buffer.get());
+        // XXX: link source to buffer in RAII exception-safe manner, in order to make sure it get's unlinked
+        Link link(this->get(), buffer.get());
 
         if(alurePlaySource(source, callback_wrapper, this) == AL_FALSE)
           throw std::runtime_error("Error: Unable to play buffer: " + std::string(alureGetErrorString()));
