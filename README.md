@@ -12,13 +12,14 @@ Documentation
 Building
 --------
 
-* C++11 required
-* See the comment in main.cpp
+Opt. adapt the Makefile to your needs
+
+    make
+    ./audioxx file.ogg
 
 
 Todo
 ----
 
-* Provide Makefile
 * Stream media instead of loading into memory
 * Explore OpenAL API, ALURE API
