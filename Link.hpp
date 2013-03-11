@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cassert>
 #include <AL/alure.h>
 
 namespace Audioxx {
@@ -12,6 +13,9 @@ namespace Audioxx {
     public:
       Link(ALuint source, ALuint buffer)
         : source(source), buffer(buffer) {
+
+        assert(source != 0);
+        assert(buffer != 0);
 
         alSourcei(source, AL_BUFFER, buffer);
       }

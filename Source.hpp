@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cstddef>
+#include <cassert>
 #include <string>
 #include <stdexcept>
 #include <AL/alure.h>
@@ -25,6 +26,7 @@ namespace Audioxx {
       }
 
       ~Source() {
+        alureStopSource(source, AL_FALSE);
         alDeleteSources(1, &source);
       }
 
@@ -46,7 +48,10 @@ namespace Audioxx {
       }
 
 
-      void stream(const std::string& filename, std::size_t numbuffers = 3) {
+      void stream(const std::string& filename, std::size_t numbuffers = 5) {
+        // XXX: at least one active, one filling
+        assert(numbuffers > 2);
+
         Stream stream(filename);
 
         if(alurePlaySourceStream(source, stream.get(), numbuffers, 0, callback_wrapper, this) == AL_FALSE)
