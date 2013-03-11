@@ -3,3 +3,5 @@
 !README.md
 !*.cpp
 !*.hpp
+!data/
+!data/tick*
