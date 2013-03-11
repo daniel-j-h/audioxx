@@ -1,2 +1,5 @@
-a.out
-*.ogg
+*
+!Makefile
+!README.md
+!*.cpp
+!*.hpp

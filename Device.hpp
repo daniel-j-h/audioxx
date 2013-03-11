@@ -3,13 +3,13 @@
 #include <stdexcept>
 #include <AL/alure.h>
 
-namespace Audio {
+namespace Audioxx {
 
   class Device final {
     public:
       Device() {
         if(not alureInitDevice(nullptr, nullptr))
-          throw std::runtime_error("error: device");
+          throw std::runtime_error("error: unable to create device");
       }
 
       ~Device() {
