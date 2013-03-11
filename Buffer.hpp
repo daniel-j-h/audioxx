@@ -7,6 +7,7 @@
 namespace Audioxx {
 
   class Buffer final {
+
     public:
       Buffer(const std::string& filename)
         : buffer(alureCreateBufferFromFile(filename.c_str())) {
@@ -23,8 +24,10 @@ namespace Audioxx {
         return buffer;
       }
 
+
     private:
       ALuint buffer;
+
   };
 
 }

@@ -11,7 +11,7 @@ all: $(TARGET)
 $(TARGET): main.o
 	$(CXX) $(LDFLAGS) $(CXXFLAGS) main.o -o $(TARGET)
 
-main.o: main.cpp Buffer.hpp Device.hpp Player.hpp Source.hpp
+main.o: main.cpp Buffer.hpp Device.hpp Player.hpp Source.hpp Stream.hpp Link.hpp
 	$(CXX) $(CXXFLAGS) -c $<
 
 

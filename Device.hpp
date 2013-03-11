@@ -7,6 +7,7 @@
 namespace Audioxx {
 
   class Device final {
+
     public:
       Device() {
         if(alureInitDevice(nullptr, nullptr) == AL_FALSE)
@@ -16,6 +17,7 @@ namespace Audioxx {
       ~Device() {
         alureShutdownDevice();
       }
+
   };
 
 }

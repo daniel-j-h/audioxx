@@ -15,11 +15,10 @@ Building
 Opt. adapt the Makefile to your needs
 
     make
-    ./audioxx file.ogg
+    ./audioxx data/tick.ogg
 
 
 Todo
 ----
 
-* Stream media instead of loading into memory
 * Explore OpenAL API, ALURE API

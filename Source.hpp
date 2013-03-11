@@ -1,15 +1,18 @@
 #pragma once
 
+#include <cstddef>
 #include <string>
 #include <stdexcept>
 #include <AL/alure.h>
 
 #include "Buffer.hpp"
+#include "Stream.hpp"
+#include "Link.hpp"
 
 namespace Audioxx {
 
-  // XXX: for now creates only one source; for more we have to save an array
   class Source final {
+
     public:
       Source() : isdone(false) {
         alGenSources(1, &source);
@@ -26,25 +29,46 @@ namespace Audioxx {
         return source;
       }
 
-      void play(const Buffer& buffer) {
-        alSourcei(source, AL_BUFFER, buffer.get());
 
-        // XXX: static wrapper required, pass pointer to modify object's isdone state
+      void play(const std::string& filename) {
+        Buffer buffer(filename);
+
+        Link link(source, buffer.get());
+
         if(alurePlaySource(source, callback_wrapper, this) == AL_FALSE)
-          throw std::runtime_error("Error: Unable to play source: " + std::string(alureGetErrorString()));
+          throw std::runtime_error("Error: Unable to play buffer: " + std::string(alureGetErrorString()));
 
-        while(not isdone)
-          alureUpdateInterval(0.125);
+        eventloop();
       }
+
+
+      void stream(const std::string& filename, std::size_t numbuffers = 3) {
+        Stream stream(filename);
+
+        if(alurePlaySourceStream(source, stream.get(), numbuffers, 0, callback_wrapper, this) == AL_FALSE)
+          throw std::runtime_error("Error: Unable to play stream: " + std::string(alureGetErrorString()));
+
+        eventloop();
+      }
+
 
     private:
       ALuint source;
 
       volatile bool isdone;
 
-      static void callback_wrapper(void* source, ALuint) {
+      // XXX: static callback wrapper required, pass pointer as userdata to modify object's isdone state
+      static void callback_wrapper(void* source, ALuint) noexcept {
         static_cast<Source*>(source)->isdone = true;
       }
+
+      void eventloop(const float interval = 0.125f) const noexcept {
+        while(not isdone) {
+          alureSleep(interval);
+          alureUpdate();
+        }
+      }
+
   };
 
 }
