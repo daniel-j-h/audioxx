@@ -11,8 +11,8 @@ namespace Audioxx {
       Buffer(const std::string& filename)
         : buffer(alureCreateBufferFromFile(filename.c_str())) {
 
-        if(not buffer)
-          throw std::runtime_error("error: unable to create buffer");
+        if(buffer == AL_NONE)
+          throw std::runtime_error("Error: Unable to create buffer: " + std::string(alureGetErrorString()));
       }
 
       ~Buffer() {

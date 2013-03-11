@@ -1,5 +1,6 @@
 #pragma once
 
+#include <string>
 #include <stdexcept>
 #include <AL/alure.h>
 
@@ -14,7 +15,7 @@ namespace Audioxx {
         alGenSources(1, &source);
 
         if(alGetError() != AL_NO_ERROR)
-          throw std::runtime_error("error: unable to create source");
+          throw std::runtime_error("Error: Unable to create source: " + std::string(alureGetErrorString()));
       }
 
       ~Source() {
@@ -30,7 +31,7 @@ namespace Audioxx {
 
         // XXX: static wrapper required, pass pointer to modify object's isdone state
         if(alurePlaySource(source, callback_wrapper, this) == AL_FALSE)
-          throw std::runtime_error("error: unable to play source");
+          throw std::runtime_error("Error: Unable to play source: " + std::string(alureGetErrorString()));
 
         while(not isdone)
           alureUpdateInterval(0.125);
