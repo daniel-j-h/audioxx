@@ -12,10 +12,11 @@ Documentation
 Building
 --------
 
-Opt. adapt the Makefile to your needs
+Opt. adapt the Makefile to your needs; export DEBUG=1 for a debug build.
 
     make
-    ./audioxx data/tick.ogg
+    ./audioxx -play data/tick.ogg
+    ./audioxx -stream data/tick.ogg
 
 
 Todo

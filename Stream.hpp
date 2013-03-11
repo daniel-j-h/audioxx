@@ -21,7 +21,7 @@ namespace Audioxx {
         alureStreamSizeIsMicroSec(AL_TRUE);
         stream = alureCreateStreamFromFile(filename.c_str(), chunklength, 0, nullptr);
 
-        if(!stream)
+        if(not stream)
           throw std::runtime_error("Error: Unable to create stream: " + std::string(alureGetErrorString()));
       }
 
