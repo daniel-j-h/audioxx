@@ -14,8 +14,8 @@ namespace Audioxx {
       Link(ALuint source, ALuint buffer)
         : source(source), buffer(buffer) {
 
-        assert(source != 0);
-        assert(buffer != 0);
+        assert(source != 0 && "Error: Source not valid");
+        assert(buffer != 0 && "Error: Buffer not valid");
 
         alSourcei(source, AL_BUFFER, buffer);
       }

@@ -26,7 +26,7 @@ namespace Audioxx {
       }
 
       ~Stream() {
-        alureDestroyStream(stream, 0, nullptr);;
+        alureDestroyStream(stream, 0, nullptr);
       }
 
       alureStream* get() const noexcept {

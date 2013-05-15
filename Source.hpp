@@ -50,7 +50,7 @@ namespace Audioxx {
 
       void stream(const std::string& filename, std::size_t numbuffers = 5) {
         // XXX: at least one active, one filling
-        assert(numbuffers > 2);
+        assert(numbuffers >= 2 && "Error: At least two buffers required");
 
         Stream stream(filename);
 

@@ -1,12 +1,18 @@
 Adventures in the land of audio handling
 ========================================
 
+Libraries
+---------
+
+* [OpenAL](http://kcat.strangesoft.net/openal.html)
+* [ALURE](http://kcat.strangesoft.net/alure.html)
+
 
 Documentation
 -------------
 
-* [OpenAL](http://kcat.strangesoft.net/openal.html)
-* [ALURE](http://kcat.strangesoft.net/alure.html)
+* [OpenAL Programmer's Guide](http://connect.creativelabs.com/openal/Documentation/OpenAL_Programmers_Guide.pdf)
+* [OpenAL Specification and Reference](http://connect.creativelabs.com/openal/Documentation/OpenAL%201.1%20Specification.pdf)
 
 
 Building
